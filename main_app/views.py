@@ -30,4 +30,5 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
-# forrest is the best
+
+# forrest sucks
