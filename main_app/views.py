@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import os
 
 def signup(request):
   error_message = ''
@@ -30,5 +31,8 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+def map(request):
+    map_key = os.environ['MAP_KEY']
+    return render(request, 'mapembed.html', {'map_key': map_key})
 
 # forrest sucks
