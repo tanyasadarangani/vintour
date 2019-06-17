@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from googleplaces import GooglePlaces, types, lang
 import os
 
 def signup(request):
@@ -35,4 +36,10 @@ def map(request):
     map_key = os.environ['MAP_KEY']
     return render(request, 'mapembed.html', {'map_key': map_key})
 
-# forrest sucks
+def serp(request):
+  key = os.environ['MAP_KEY']
+  google_places = GooglePlaces(key)
+
+  query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
+
+  return render(request, 'serp.html', {'key': key, 'query_result': query_result})

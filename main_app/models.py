@@ -24,3 +24,13 @@ class Stop(models.Model):
     hoursopen = models.CharField(max_length=50)
     phone = models.CharField(max_length=13)
     
+class Winery(models.Model): 
+    Stop = models.ForeignKey(Stop)
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    city = models.CharField(max_length=50)
+    website = models.CharField(max_length=200)
+    phone = models.CharField(max_length=15)
+    cave = models.CharField(max_length=200)
+    tours = models.CharField(max_length=200)
+    notes = models.CharField(max_length=200)
