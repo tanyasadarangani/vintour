@@ -8,12 +8,17 @@
 {% for place in query_result %}
 <li>
 {{ place.name }}
-<select name="Select Tour" id="select">
-    <option value='create'>Create new tour...</option>
-    {% for tour in tours %}
-        <option value='{{tour.name}}'>{{ tour.name }}</option>
-    {% endfor %}
-</select>
+<div class='select'>
+    <select form='addstop' name="Select Tour" id="select">
+        <option value='create'>Create new tour...</option>
+        {% for tour in tours %}
+            <option value='{{tour.name}}'>{{ tour.name }}</option>
+        {% endfor %}
+    </select>
+    <form action="" id='addstop'>
+        <input type="submit" class='btn'>Add Stop</input>
+    </form>
+</div>
 </li>
 
 {% endfor %}
