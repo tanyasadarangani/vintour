@@ -18,19 +18,20 @@ class Tour(models.Model):
     regions = models.CharField(max_length=250)
 
 class Stop(models.Model):
-    Tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     region = models.CharField(max_length=50)
     hoursopen = models.CharField(max_length=50)
     phone = models.CharField(max_length=13)
-    
+
 class Winery(models.Model): 
-    Stop = models.ForeignKey(Stop)
+    stop = models.ForeignKey(Stop, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=50)
     website = models.CharField(max_length=200)
     phone = models.CharField(max_length=15)
-    cave = models.CharField(max_length=200)
-    tours = models.CharField(max_length=200)
-    notes = models.CharField(max_length=200)
+    cave = models.BooleanField()
+    tours = models.BooleanField()
+    notes = models.CharField(max_length=200)    
+    
