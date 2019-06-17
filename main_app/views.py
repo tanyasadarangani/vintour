@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from googleplaces import GooglePlaces, types, lang
 import os
+from .models import Winery
 
 def signup(request):
   error_message = ''
@@ -38,8 +39,9 @@ def map(request):
 
 def serp(request):
   key = os.environ['MAP_KEY']
-  google_places = GooglePlaces(key)
+  #google_places = GooglePlaces(key)
+  #query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
 
-  query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
+  query_result = Winery.objects.all()
 
   return render(request, 'serp.html', {'key': key, 'query_result': query_result})
