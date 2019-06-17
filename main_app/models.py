@@ -25,13 +25,12 @@ class Stop(models.Model):
     phone = models.CharField(max_length=13)
 
 class Winery(models.Model): 
-    stop = models.ForeignKey(Stop, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
-    city = models.CharField(max_length=50)
-    website = models.CharField(max_length=200)
-    phone = models.CharField(max_length=15)
-    cave = models.BooleanField()
-    tours = models.BooleanField()
-    notes = models.CharField(max_length=200)    
+    address = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=50, blank=True)
+    website = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=15, blank=True)
+    cave = models.BooleanField(blank=True)
+    tours = models.BooleanField(blank=True)
+    notes = models.CharField(max_length=200, blank=True)    
     
