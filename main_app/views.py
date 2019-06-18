@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from googleplaces import GooglePlaces, types, lang
 import os
-from .models import Winery, Tour, Stop, User
+from .models import Winery, Tour, User
 
 def signup(request):
   error_message = ''
