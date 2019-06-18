@@ -10,21 +10,6 @@ class Profile(models.Model):
     location = models.CharField(max_length=50)
     bio = models.TextField()
 
-class Tour(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=40, default='Newly Created Tour')
-    numberofstops = models.IntegerField(blank=True)
-    traveldistance = models.FloatField(blank=True)
-    traveltime = models.FloatField(blank=True)
-    regions = models.CharField(max_length=250)
-
-class Stop(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    region = models.CharField(max_length=50, blank=True)
-    hoursopen = models.CharField(max_length=50, blank=True)
-    phone = models.CharField(max_length=13, blank=True)
-
 class Winery(models.Model): 
     name = models.CharField(max_length=100)
 <<<<<<< HEAD
@@ -37,4 +22,14 @@ class Winery(models.Model):
     desc = models.CharField(max_length=1000, blank=True, default='')
     price = models.CharField(max_length=50, blank=True, default='')
     rating = models.CharField(max_length=10, blank=True, default='')
+<<<<<<< HEAD
 >>>>>>> 661d377510af71bb7abff8437496d3f42061e45d
+=======
+
+class Tour(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=40, default='Newly Created Tour')
+    regions = models.CharField(max_length=250, blank=True)
+    winery = models.ManyToManyField(Winery)    
+
+>>>>>>> 0d94a325924b3b82ab86b3bf85886b6aad767c27
