@@ -10,24 +10,49 @@ header{
     height: 70px;
     box-sizing: border-box;
     z-index: 1;
+    font-family: 'Lato', sans-serif;
+}
+header a{
+    color: white;
+    text-decoration: none;
 }
 .header-left{
     width: 50%;
     float: left;
+    margin-top: -10px;
 }
 .header-right{
     width: 50%;
     float: right;
+    margin-top: 8px;
 }
 .header-center{
     display: none;
     text-align: center;
+    margin-top: 8px;
+}
+.desktop-nav a,
+.desktop-right-nav a{
+    text-transform: uppercase;
+    letter-spacing: 0.020em;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.mobile-nav-inner a{
+    text-transform: uppercase;
+    letter-spacing: 0.020em;
+    color: #333;
 }
 
-.logo{
-    font-size: 20px;
+.logo-text{
+    font-size: 32px;
     display: inline-block;
     color: white;
+}
+.logo-icon{
+    height: 45px;
+    fill: white;
+    display: inline-block;
 }
 .mobile-nav-trigger{
     display: inline-block;
@@ -79,7 +104,7 @@ header{
     transform: rotate(-45deg);
 }
 .mobile-nav-inner{
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .mobile-nav-inner a{
     display: block;
@@ -91,7 +116,7 @@ header{
     text-align: right;
 }
 .band{
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -99,7 +124,7 @@ header{
     position: relative;
 }
 .intro-band{
-    padding-top: 70px;
+    // padding-top: 70px;
 }
 .band-content{
     width: 90%;
@@ -116,4 +141,35 @@ header{
     bottom: 10px;
     width: 50px;
     text-align: center;
+}
+.next-arrow svg{
+    width: 30px;
+    height: 20px;
+    fill: white;
+}
+.inner-wrap{
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+.slider{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0 !important;
+    .slide{
+        height: 100vh;
+        width: 100%;
+        img{
+            width: 100%;
+            height: 110vh;
+        }
+    }
+}
+.content{
+    padding-top: 70px;
 }

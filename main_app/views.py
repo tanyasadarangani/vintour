@@ -33,6 +33,9 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+def profile(request):
+    return render(request, 'profile.html')
+
 def map(request):
     map_key = os.environ['MAP_KEY']
     return render(request, 'mapembed.html', {'map_key': map_key})
