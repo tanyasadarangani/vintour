@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="band content profile-content" >
+        <div class="inner-wrap">
+            <div class="profile-band1">
+                <div class="pb1-left">
+                    <div class="profile-image" style="background-image: url('{% static "images/tanya.jpg" %}');"></div>
+                </div>
+                <div class="pb1-right">
+                    <a href="" class="plus-button">+</a>
+                    <a href="" class="minus-button">-</a>
+                </div>
+            </div>
+            <div class="profile-band2">
+                <div class="trips-carousel owl-carousel owl-theme">
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg.jpg" %}">
+                        <span class="trip-title">Laguna Beach</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg2.jpg" %}">
+                        <span class="trip-title">Laguna Beach2</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg3.jpg" %}">
+                        <span class="trip-title">Laguna Beach3</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg4.jpg" %}">
+                        <span class="trip-title">Laguna Beach4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

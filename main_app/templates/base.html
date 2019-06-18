@@ -6,19 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vintour</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.css' %}">
     <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
     <header>
         <div class="header-left">
-            <span class="logo">VinTour</span>
+            <span class="logo-text">VinTour</span>
+            <svg version="1.1" class="logo-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    width="45px" height="45px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+                <g>
+                    <g>
+                        <g>
+                            <path d="M16.759,11.696V3.114c0.208-0.132,0.343-0.296,0.343-0.505c0-0.207-0.135-0.371-0.343-0.502V1.242
+                                C16.759,0.534,15.762,0,14.435,0c-1.324,0-2.321,0.534-2.321,1.242v0.865c-0.208,0.131-0.343,0.295-0.343,0.502
+                                c0,0.209,0.135,0.373,0.343,0.505v8.581c-2.479,0.744-4.246,2.636-4.246,4.853v10.043v15.951c0,2.22,4.596,2.458,6.567,2.458
+                                c1.974,0,6.563-0.238,6.563-2.458V23.318v-6.771C20.997,14.331,19.233,12.44,16.759,11.696z M14.435,42.816
+                                c-2.305,0-3.848-0.361-4.384-0.621V27.634c2.252-0.201,3.59-0.996,4.789-1.713c1.144-0.686,2.164-1.283,3.975-1.456v17.731
+                                C18.279,42.456,16.739,42.816,14.435,42.816z"/>
+                            <path d="M37.132,33.646c0-0.046-1.025-8.291-1.025-8.291c-0.119-2.205-4.782-2.379-6.228-2.379c-1.44,0-6.098,0.174-6.214,2.379
+                                c0,0-1.03,8.245-1.03,8.291c0,2.647,2.628,4.771,6.152,5.14v2.465c-4.305,1.448-4.309,1.774-4.309,1.978
+                                c0,0.859,3.774,0.953,5.398,0.953c1.627,0,5.408-0.094,5.408-0.953c0-0.202-0.004-0.527-4.314-1.978v-2.465
+                                C34.5,38.417,37.132,36.296,37.132,33.646z M29.879,25.156c2.171,0,3.616,0.376,4.08,0.629l0.114,0.927
+                                c-1.104,0.188-2.832,0.692-4.373,2.027c-1.109,0.962-3.277,1.103-4.397,1.103l0.507-4.057
+                                C26.27,25.532,27.713,25.156,29.879,25.156z"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+
         </div>
         <div class="header-center">
             <nav class="desktop-nav">
                 <a href="{% url 'about' %}">About</a>
-                <a href="#">Search</a>
+                <a href="/#search">Search</a>
                 <a href="#">Recommended Trips</a>
             </nav>
         </div>
@@ -35,10 +61,10 @@
                 </div>
                 <div class="mobile-nav-inner">
                     <a href="{% url 'about' %}">About</a>
-                    <a href="#">Search</a>
+                    <a href="#search">Search</a>
                     <a href="#">Recommended Trips</a>
                     {% if user.is_authenticated %}
-                        <a href="#">Your Profile</a>
+                        <a href="{% url 'profile' %}">Your Profile</a>
                         <a href="{% url 'logout' %}">Log Out</a>
                     {% else %}
                         <a href="{% url 'signup' %}">Sign Up</a>
@@ -48,7 +74,7 @@
             </nav>
             <div class="desktop-right-nav">
                 {% if user.is_authenticated %}
-                    <a href="#">Your Profile</a>
+                    <a href="{% url 'profile' %}">Your Profile</a>
                     <a href="{% url 'logout' %}">Log Out</a>
                 {% else %}
                     <a href="{% url 'signup' %}">Sign Up</a>
