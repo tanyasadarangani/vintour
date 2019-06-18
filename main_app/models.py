@@ -27,7 +27,14 @@ class Stop(models.Model):
 
 class Winery(models.Model): 
     name = models.CharField(max_length=100)
+<<<<<<< HEAD
     address = models.CharField(max_length=100, blank=True)
     desc = models.CharField(max_length=1000, blank=True)
     price = models.CharField(max_length=50, blank=True)
     rating = models.IntegerField(blank=True)
+=======
+    address = models.CharField(max_length=100, blank=True, default='')
+    desc = models.CharField(max_length=1000, blank=True, default='')
+    price = models.CharField(max_length=50, blank=True, default='')
+    rating = models.CharField(max_length=10, blank=True, default='')
+>>>>>>> 661d377510af71bb7abff8437496d3f42061e45d
