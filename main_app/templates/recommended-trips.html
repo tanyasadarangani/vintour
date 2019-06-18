@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="band content recommended-trips-content" >
+        <div class="inner-wrap">
+            <div class="rec-band1">
+                <div class="trips-carousel owl-carousel owl-theme">
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg4.jpg" %}">
+                        <span class="trip-title">Laguna Beach</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg2.jpg" %}">
+                        <span class="trip-title">Laguna Beach2</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg3.jpg" %}">
+                        <span class="trip-title">Laguna Beach3</span>
+                    </div>
+                    <div class="trip-item item">
+                        <img src="{% static "images/bg4.jpg" %}">
+                        <span class="trip-title">Laguna Beach4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
