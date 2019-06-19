@@ -100,14 +100,14 @@ def search(request):
 def serp(request):
   key = os.environ['MAP_KEY']
   google_places = GooglePlaces(key)
-  search = request.POST.copy()
-  print(search['region'])
+  regions = request.POST.getlist('region')
+  print(regions)
   #query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
   if request.user.is_authenticated:
     tours = Tour.objects.filter(user=request.user.id)    
   else:
     tours = None
-  query_result = Winery.objects.filter(region=search['region'])[:10]
+  query_result = Winery.objects.filter(region__in=regions)[:10]
   for query in query_result:
     call = google_places.text_search(query=query) 
     query.place_id = call._response['results'][0]['place_id']
