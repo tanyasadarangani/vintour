@@ -36,6 +36,9 @@ def about(request):
 def profile(request):
     return render(request, 'profile.html')
 
+def recommendedtrips(request):
+    return render(request, 'recommended-trips.html')
+
 def map(request):
     map_key = os.environ['MAP_KEY']
     return render(request, 'mapembed.html', {'map_key': map_key})

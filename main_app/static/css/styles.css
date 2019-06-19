@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #221710;
 }
 
 header {
@@ -144,6 +145,7 @@ header a {
 }
 
 .band-content {
+  color: white;
   width: 90%;
   top: 50%;
   left: 50%;
@@ -194,10 +196,6 @@ header a {
 
 .content {
   padding-top: 70px;
-}
-
-.profile-content {
-  background-color: #221710;
 }
 
 .profile-image {
@@ -251,6 +249,69 @@ header a {
   line-height: 28px;
 }
 
+.about-intro {
+  background-color: #221710;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.about-intro .band-content {
+  top: initial;
+  bottom: 30px;
+}
+
+.about-title {
+  margin-bottom: 0;
+  text-align: center;
+  font-family: "Lato";
+}
+
+.about-nav {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+  width: 300px;
+}
+
+.about-nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: white;
+  letter-spacing: 0.02em;
+}
+
+.center {
+  text-align: center;
+}
+
+.person {
+  width: 90vw;
+  height: 90vw;
+  margin: 20px auto;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.person .context {
+  padding: 40px;
+  background-color: white;
+  opacity: 0.7;
+  padding: 30px;
+  margin: 50px;
+  color: black;
+}
+
+.our-team {
+  color: white;
+}
+
 @media (min-width: 1024px) {
   .header-left {
     width: 33%;
@@ -272,6 +333,24 @@ header a {
   }
 
   .desktop-right-nav {
+    display: block;
+  }
+
+  .person {
+    width: 30vw;
+    height: 30vw;
+    margin: 20px auto;
+    float: left;
+    margin-right: 1%;
+    margin-left: 2%;
+  }
+  .person .context {
+    background-color: transparent;
+    display: none;
+    color: white;
+    opacity: 1;
+  }
+  .person:hover .context {
     display: block;
   }
 }
