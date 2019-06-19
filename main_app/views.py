@@ -36,7 +36,8 @@ def about(request):
 
 @login_required
 def profile(request):
-    return render (request, 'profile.html')
+    tours = Tour.objects.filter(user=request.user.id)     
+    return render (request, 'profile.html', {'tours': tours})
 
 def recommendedtrips(request):
     return render(request, 'recommended-trips.html')
