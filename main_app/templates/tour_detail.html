@@ -1,8 +1,29 @@
-
-
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+body {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+iframe {
+  position: absolute;
+}
+</style>
 <iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key={{ map_key }}&q=Napa+CA" allowfullscreen>
+width="80%"
+height="40%"
+frameborder="0" style="border:0"
+src="{{ embed_url }}" allowfullscreen>
 </iframe>
+
+{{ waypoint_list }}
+{{ waypoint_concat }}
+
+{% endblock %}
+
+{% comment %}
+background-image: url('{% static "images/bg4.jpg" %}');
+{% endcomment %}
