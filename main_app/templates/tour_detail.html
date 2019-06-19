@@ -20,7 +20,7 @@ height="40%"
 frameborder="0" style="border:0"
 src="{{ embed_url }}" allowfullscreen>
 </iframe>
-
+<div id="winery-cards-sortable">
 {% for winery in waypoint_dicts %}
 <div class='winery-card'>
   <strong>{{ winery.name }}</strong><br>
@@ -29,7 +29,7 @@ src="{{ embed_url }}" allowfullscreen>
   <strong>{{ winery.price }}</strong><br>
 </div>
 {% endfor %}
-
+</div>
 {% endblock %}
 
 {% comment %}
