@@ -94,22 +94,27 @@ def add_winery(request):
   tour.save()
   return redirect('/')
 
+def search(request):
+  return render(request,'search.html')
+
 def serp(request):
   key = os.environ['MAP_KEY']
   google_places = GooglePlaces(key)
+  search = request.POST.copy()
+  print(search['region'])
   #query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
   if request.user.is_authenticated:
     tours = Tour.objects.filter(user=request.user.id)    
   else:
     tours = None
-  query_result = Winery.objects.all()[:10]
+  query_result = Winery.objects.filter(region=search['region'])[:10]
   for query in query_result:
     call = google_places.text_search(query=query) 
     query.place_id = call._response['results'][0]['place_id']
-    query.image = call._response['results'][0]['photos'][0]['html_attributions']    
+    #query.image = call._response['results'][0]['photos'][0]['html_attributions']    
     query.rating = call._response['results'][0]['rating']
+    #query.region = call._response['results'][0]['region']
     query.total_ratings = call._response['results'][0]['user_ratings_total']
-    query.open_now = call._response['results'][0]['opening_hours']['open_now']
+    #query.open_now = call._response['results'][0]['opening_hours']['open_now']
 
   return render(request, 'serp.html', {'key': key, 'query_result': query_result, 'tours': tours})
-
