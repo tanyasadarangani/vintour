@@ -42,50 +42,65 @@ def profile(request):
 def recommendedtrips(request):
     return render(request, 'recommended-trips.html')
 
+def stop_reorder(request, tour_id):
+  data = request.POST.copy()
+  tour = Tour.objects.get(id=tour_id)
+  position = data['position']
+  stops = list(filter(None, tour.stops.split(',')))
+  print(stops)
+  stops_copy = stops
+  # try:
+  #   if data['moveup']:
+  #     stops[int(position) - 1] = stops[int(position)]
+  #     stops[int(position)] = stops_copy[int(position) - 1]
+  # except:
+  #   if data['movedn']:
+  #     # if stops[int(position) + 1] in stops : stops[int(position) + 1] = stops[int(position)]
+  #     stops[int(position) + 1] = stops[int(position)]
+  #     stops[int(position)] = stops_copy[int(position) + 1]
+  # tour.stops = ','.join(stops)
+  # tour.save()
+  return redirect(f'/tours/{tour_id}/')
+
+
+
 def tour_detail(request, tour_id):
     map_key = os.environ['MAP_KEY']
     # Get tour
     tour = Tour.objects.get(id=tour_id)
-    # Set tour start and finish
-    origin = tour.winery.all().first().name
-    destination = tour.winery.all().last().name
-    # Format for url
-    origin_formatted = origin.replace(' ', '+').replace('&', '+').replace('.', '')
-    destination_formatted = destination.replace(' ', '+').replace('&', '+').replace('.', '')
-    # List all wineries in tour except start and finish
-    waypoint_dicts = list(tour.winery.all())
-    waypoint_list = list(tour.winery.all().values('name'))
+    stops = tour.stops.split(',')
+    # Set tour start and finish and format for url
+    origin = stops[0]
+    destination = stops[len(stops) - 2]
+    origin_formatted = stops[0].replace(' ', '+').replace('&', '+').replace('.', '')
+    destination_formatted = stops[len(stops) - 2].replace(' ', '+').replace('&', '+').replace('.', '')
+    # Assemble wineries in order for display on route
+    waypoint_dicts = []
+    for stop in stops:
+      if len(stop):
+        st = Winery.objects.get(name=stop)
+        waypoint_dicts.append(st)
+    # Assemble waypoints excluding first and last into list for url
     waypoints = list(tour.winery.all().exclude(Q(name=origin) | Q(name=destination)).values('name'))
-    
-    for idx, waypoint in enumerate(waypoint_list):
-      waypoint_list[idx] = waypoint['name']
     for idx, waypoint in enumerate(waypoints):
       waypoints[idx] = waypoint['name']
-    for idx, waypoint in enumerate(waypoints):
-      waypoints[idx] = waypoints[idx]
-    for idx, waypoint in enumerate(waypoints):
-      waypoints[idx] = waypoints[idx]
+
+    # Format waypoints for url
     for idx in range(len(waypoints) - 1):
       waypoints[idx] = waypoints[idx] + '|'
-
     waypoint_concat = ''.join(waypoints).replace(' ', '+').replace('&', '+').replace('.', '')
 
-
     embed_url = (f'https://www.google.com/maps/embed/v1/directions?key={ map_key }&origin={ origin_formatted }&destination={ destination_formatted }&waypoints={ waypoint_concat }')
-
     return render(request, 'tour_detail.html', {
       'map_key': map_key,
       'tour': tour,
       'embed_url': embed_url,
-      'waypoint_list': waypoint_list,
-      'waypoint_concat': waypoint_concat,
       'waypoint_dicts': waypoint_dicts,
       })
 
 def add_winery(request):
   data = request.POST.copy()
   winery = Winery.objects.get(id=int(data['winery']))
-
   if data['tour'] == 'create':
     user = User.objects.get(id=request.user.id)
     tour = Tour(name='Newly Created Tour', user=user)
@@ -93,6 +108,7 @@ def add_winery(request):
   else:
     tour = Tour.objects.get(id=int(data['tour']))
   tour.winery.add(winery)
+  tour.stops += f'{winery},'
   tour.save()
   return redirect('/')
 
