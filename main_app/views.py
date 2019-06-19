@@ -65,7 +65,6 @@ def tour_detail(request, tour_id):
 
     waypoint_concat = ''.join(waypoints).replace(' ', '+').replace('&', '+').replace('.', '')
 
-
     embed_url = (f'https://www.google.com/maps/embed/v1/directions?key={ map_key }&origin={ origin_formatted }&destination={ destination_formatted }&waypoints={ waypoint_concat }')
 
     return render(request, 'tour_detail.html', {

@@ -8,7 +8,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-.winerycard {
+.winery-card {
   border: 1px solid black;
   height: 100px;
   width: 60%;
@@ -22,7 +22,7 @@ src="{{ embed_url }}" allowfullscreen>
 </iframe>
 
 {% for winery in waypoint_dicts %}
-<div class='winerycard'>
+<div class='winery-card'>
   <strong>{{ winery.name }}</strong><br>
   <strong>{{ winery.address }}</strong><br>
   <strong>{{ winery.desc }}</strong><br>
