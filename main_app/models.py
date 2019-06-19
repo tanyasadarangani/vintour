@@ -1,7 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 # from django.core.paginator import 
+=======
+>>>>>>> bdd4e70745606d04996b13ae48855bb000c123b5
 from datetime import date
 
 # Create your models here.
