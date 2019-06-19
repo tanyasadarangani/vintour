@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block content %}
+
+<h1>SERP</h1>
+<ul>
+{% for place in query_result %}
+<li>
+{{ place.name }}
+<div class='select'>
+    <select form='addstop' name="Select Tour" id="select">
+        <option value='create'>Create new tour...</option>
+        {% for tour in tours %}
+            <option value='{{tour.name}}'>{{ tour.name }}</option>
 
 {% block content %}
 <h1>SERP</h1>
