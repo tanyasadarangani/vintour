@@ -1,7 +1,58 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+    <div class="band content about-intro" style="background-image: url('{% static "images/aboutimg2.jpg" %}');" > 
+        <div class="band-content">
+            <h1 class="about-title has-text-white">About Us</h1>
+            
+        </div>
+        <a href="#our-story" class="next-arrow">
+            <svg version="1.1" id="down-arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    width="284.929px" height="284.929px" viewBox="0 0 284.929 284.929" style="enable-background:new 0 0 284.929 284.929;"
+                    xml:space="preserve">
+            <g>
+                <path d="M282.082,76.511l-14.274-14.273c-1.902-1.906-4.093-2.856-6.57-2.856c-2.471,0-4.661,0.95-6.563,2.856L142.466,174.441
+                    L30.262,62.241c-1.903-1.906-4.093-2.856-6.567-2.856c-2.475,0-4.665,0.95-6.567,2.856L2.856,76.515C0.95,78.417,0,80.607,0,83.082
+                    c0,2.473,0.953,4.663,2.856,6.565l133.043,133.046c1.902,1.903,4.093,2.854,6.567,2.854s4.661-0.951,6.562-2.854L282.082,89.647
+                    c1.902-1.903,2.847-4.093,2.847-6.565C284.929,80.607,283.984,78.417,282.082,76.511z"/>
+            </g>
+            </svg>
+        </a>
+    </div>
+    <div class="band content our-story" id="our-story" > 
+        <nav class="about-nav">
+            <a href="#our-story">Our Story</a>
+            <a href="#our-team">Our Team</a>
+        </nav>
+        <div class="band-content">
+            <h2 class="center has-text-white">Our Story</h2>
+            <p>VinTour was estabilished in 2019 with the aim of bringin information about winery's to you EASILY and QUICKLY. We are here to bring easy access of winery's to you! Are you looking to be part of a special tasting? Are you looking for a particular grape? For all you wine freaks, we are here to bring you all the information you have been looking for and the best route to take so you can make it to all the winery's you are hoping to hit. We want to support your wish of tasting each and every type of wine you are looking to try at every winery.</p>
+            <p></p>
+       </div>
+    </div>
+    <div class="band content our-team" id="our-team"> 
+        <div class="inner-wrap">
+            <h2 class="center has-text-white">Our Team</h2>
+            <p>We are working hard to bring you the best experience you deserve!</p>
+        </div>
+        <div class="person" style="background-image: url('{% static "images/mikeabout.jpg" %}');" >
+            <div class="context">
+                <h2 class="has-text-white">Michael Bailey</h2>
+            </div>
+        </div>
 
+        <div class="person" style="background-image: url('{% static "images/tanyabout.jpg" %}');" >
+            <div class="context">
+                <h2 class="has-text-white">Tanya Sadarangani</h2>
+            </div>
+        </div>
 
-<h1>About</h1>
+        <div class="person" style="background-image: url('{% static "images/frostyabout.jpg" %}');" >
+            <div class="context">
+                <h2 class="has-text-white">Forrest Smith</h2>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock %}
