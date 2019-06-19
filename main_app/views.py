@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from googleplaces import GooglePlaces, types, lang
 import os
 from .models import Winery, Tour, User
+from django.db.models import Q
 
 def signup(request):
   error_message = ''
@@ -36,9 +37,45 @@ def about(request):
 def profile(request):
     return render(request, 'profile.html')
 
-def map(request):
+def tour_detail(request, tour_id):
     map_key = os.environ['MAP_KEY']
-    return render(request, 'mapembed.html', {'map_key': map_key})
+    # Get tour
+    tour = Tour.objects.get(id=tour_id)
+    # Set tour start and finish
+    origin = tour.winery.all().first().name
+    destination = tour.winery.all().last().name
+    # Format for url
+    origin_formatted = origin.replace(' ', '+').replace('&', '+').replace('.', '')
+    destination_formatted = destination.replace(' ', '+').replace('&', '+').replace('.', '')
+    # List all wineries in tour except start and finish
+    waypoint_dicts = list(tour.winery.all())
+    waypoint_list = list(tour.winery.all().values('name'))
+    waypoints = list(tour.winery.all().exclude(Q(name=origin) | Q(name=destination)).values('name'))
+    
+    for idx, waypoint in enumerate(waypoint_list):
+      waypoint_list[idx] = waypoint['name']
+    for idx, waypoint in enumerate(waypoints):
+      waypoints[idx] = waypoint['name']
+    for idx, waypoint in enumerate(waypoints):
+      waypoints[idx] = waypoints[idx]
+    for idx, waypoint in enumerate(waypoints):
+      waypoints[idx] = waypoints[idx]
+    for idx in range(len(waypoints) - 1):
+      waypoints[idx] = waypoints[idx] + '|'
+
+    waypoint_concat = ''.join(waypoints).replace(' ', '+').replace('&', '+').replace('.', '')
+
+
+    embed_url = (f'https://www.google.com/maps/embed/v1/directions?key={ map_key }&origin={ origin_formatted }&destination={ destination_formatted }&waypoints={ waypoint_concat }')
+
+    return render(request, 'tour_detail.html', {
+      'map_key': map_key,
+      'tour': tour,
+      'embed_url': embed_url,
+      'waypoint_list': waypoint_list,
+      'waypoint_concat': waypoint_concat,
+      'waypoint_dicts': waypoint_dicts,
+      })
 
 def add_winery(request):
   data = request.POST.copy()
