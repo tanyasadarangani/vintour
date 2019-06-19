@@ -40,6 +40,14 @@ def map(request):
     map_key = os.environ['MAP_KEY']
     return render(request, 'mapembed.html', {'map_key': map_key})
 
+def add_winery(request):
+  data = request.POST.copy()
+  winery = Winery.objects.get(id=int(data['winery']))
+  tour = Tour.objects.get(id=int(data['tour']))
+  tour.winery.add(winery)
+  tour.save()
+  return redirect('/')
+
 def serp(request):
   key = os.environ['MAP_KEY']
   google_places = GooglePlaces(key)
@@ -58,3 +66,4 @@ def serp(request):
     query.open_now = call._response['results'][0]['opening_hours']['open_now']
 
   return render(request, 'serp.html', {'key': key, 'query_result': query_result, 'tours': tours})
+
