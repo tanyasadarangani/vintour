@@ -1,27 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <h1>SERP</h1>
 
+<div class="container">
+    <div class="columns">
+        {% for place in query_result %}
+        <div class="is-half">
+            <ul>
+                <li>Name: {{ place.name }}
+                <li>Address: {{ place.address }}
+                <li>Rating: {{ place.rating }}
+                <li>Open Now?: {{ place.open_now }}
+                <li>Place ID: {{ place.place_id }}
+            </ul>
 
-<ul>
-{% for place in query_result %}
-<li>
-{{ place.name }}
-<div class='select'>
-    <select form='addstop' name="Select Tour" id="select">
-        <option value='create'>Create new tour...</option>
-        {% for tour in tours %}
-            <option value='{{tour.name}}'>{{ tour.name }}</option>
+            <div class='select'>
+                <select form='addstop' name="Select Tour" id="select">
+                    <!--<option value='create'>Create new tour...</option> -->
+                    {% for tour in tours %}
+                        <option value='{{tour.name}}'>{{ tour.name }}</option>
+                    {% endfor %}
+                </select>
+                <form style='display:inline' action="" id='addstop'>
+                    <input type="submit" class='btn' value='Add Stop'></input>
+                </form>
+            </div>
+            </li>
+        </div>
         {% endfor %}
-    </select>
-    <form action="" id='addstop'>
-        <input type="submit" class='btn'>Add Stop</input>
-    </form>
+        
+    </div>
 </div>
-</li>
-
-{% endfor %}
-</ul>
 
 {% endblock %}  
