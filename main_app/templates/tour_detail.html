@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+body {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.winerycard {
+  border: 1px solid black;
+  height: 100px;
+  width: 60%;
+}
+</style>
+<iframe
+width="80%"
+height="40%"
+frameborder="0" style="border:0"
+src="{{ embed_url }}" allowfullscreen>
+</iframe>
+
+{% for winery in waypoint_dicts %}
+<div class='winerycard'>
+  <strong>{{ winery.name }}</strong><br>
+  <strong>{{ winery.address }}</strong><br>
+  <strong>{{ winery.desc }}</strong><br>
+  <strong>{{ winery.price }}</strong><br>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% comment %}
+background-image: url('{% static "images/bg4.jpg" %}');
+{% endcomment %}
