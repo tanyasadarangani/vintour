@@ -22,7 +22,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -43,7 +44,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -65,7 +67,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -87,7 +90,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -110,7 +114,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -132,7 +137,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -155,7 +161,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -177,7 +184,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -199,7 +207,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -221,7 +230,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -243,7 +253,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -264,7 +275,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -285,7 +297,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Napa'
    }
    data.append(item)
    pk += 1
@@ -306,7 +319,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -327,7 +341,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -348,7 +363,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -369,7 +385,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -390,7 +407,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -411,7 +429,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -432,7 +451,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -453,7 +473,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -474,7 +495,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -495,7 +517,8 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
@@ -516,13 +539,13 @@ for winery in wineries:
       'name': winery.find('.article-body-meta h4')[0].text,
       'address': winery.find('.article-body-meta>h6')[0].text,
       'desc': winery.find('.article-body-entry>p')[0].text,
-      'price': price
+      'price': price,
+      'region': 'Sonoma'
    }
    data.append(item)
    pk += 1
 
 
 
-with open('winery_scrape.json', 'w') as writeJSON:
-   json.dump(data, writeJSON, ensure_ascii=False) 
-
+with open('winery_scrape_with_region.json', 'w') as writeJSON:
+   json.dump(data, writeJSON, ensure_ascii=False)
