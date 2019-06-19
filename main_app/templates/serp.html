@@ -19,7 +19,7 @@
             <div class='select'>
             <form style='display:inline' method='POST' action="/tours/add/" id='addstop'>
                 <select name="tour" id="select">
-                    <!--<option value='create'>Create new tour...</option> -->
+                    <option value='create'>Create new tour...</option>
                     {% for tour in tours %}
                         <option value='{{tour.id}}'>{{ tour.name }}</option>
                     {% endfor %}

@@ -43,7 +43,13 @@ def map(request):
 def add_winery(request):
   data = request.POST.copy()
   winery = Winery.objects.get(id=int(data['winery']))
-  tour = Tour.objects.get(id=int(data['tour']))
+
+  if data['tour'] == 'create':
+    user = User.objects.get(id=request.user.id)
+    tour = Tour(name='Newly Created Tour', user=user)
+    tour.save()
+  else:
+    tour = Tour.objects.get(id=int(data['tour']))
   tour.winery.add(winery)
   tour.save()
   return redirect('/')
