@@ -16,7 +16,8 @@ class Winery(models.Model):
     desc = models.CharField(max_length=1000, blank=True, default='')
     price = models.CharField(max_length=50, blank=True, default='')
     rating = models.CharField(max_length=10, blank=True, default='')
-    
+    region = models.CharField(max_length=50, blank=True, default='')
+
     def __str__(self):
         return self.name
 
@@ -24,7 +25,8 @@ class Tour(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=40, default='Newly Created Tour')
     regions = models.CharField(max_length=250, blank=True)
-    winery = models.ManyToManyField(Winery)    
+    winery = models.ManyToManyField(Winery)
+    stops = models.CharField(max_length=300, blank=True)    
 
     def __str__(self):
         return self.name
