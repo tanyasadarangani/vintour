@@ -33,8 +33,9 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def profile(request):
-    return render(request, 'profile.html')
+    return render (request, 'profile.html')
 
 def recommendedtrips(request):
     return render(request, 'recommended-trips.html')
