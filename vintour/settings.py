@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
-django_heroku.settings(locals())
+
 # Map API key stuff:
 import environ
 environ.Env()
@@ -129,3 +128,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+import django_heroku
+django_heroku.settings(locals())
