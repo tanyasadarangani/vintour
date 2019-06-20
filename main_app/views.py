@@ -45,21 +45,23 @@ def recommendedtrips(request):
 def stop_reorder(request, tour_id):
   data = request.POST.copy()
   tour = Tour.objects.get(id=tour_id)
-  position = data['position']
+  position = int(data['position'])
   stops = list(filter(None, tour.stops.split(',')))
-  print(stops)
-  stops_copy = stops
-  # try:
-  #   if data['moveup']:
-  #     stops[int(position) - 1] = stops[int(position)]
-  #     stops[int(position)] = stops_copy[int(position) - 1]
-  # except:
-  #   if data['movedn']:
-  #     # if stops[int(position) + 1] in stops : stops[int(position) + 1] = stops[int(position)]
-  #     stops[int(position) + 1] = stops[int(position)]
-  #     stops[int(position)] = stops_copy[int(position) + 1]
-  # tour.stops = ','.join(stops)
-  # tour.save()
+  stops_copy = stops.copy()
+  try:
+    if data['moveup'] and position >= 1:
+      stops[position - 1] = stops[position]
+      stops[position] = stops_copy[position - 1]
+  except:
+    pass
+  try:
+    if data['movedn'] and position <= len(stops) - 2:
+      stops[position + 1] = stops_copy[position]
+      stops[position] = stops_copy[position + 1]
+  except:
+    pass
+  tour.stops = ','.join(stops)
+  tour.save()
   return redirect(f'/tours/{tour_id}/')
 
 
