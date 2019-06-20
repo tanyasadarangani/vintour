@@ -135,7 +135,12 @@ def search(request):
 def serp(request):
   key = os.environ['MAP_KEY']
   google_places = GooglePlaces(key)
-  regions = request.POST.getlist('region')
+  if 'regions' in request.session:
+    regions = request.session['regions']
+  else:
+    regions = request.POST.getlist('region')
+    request.session['regions'] = regions
+
   if request.user.is_authenticated:
     tours = Tour.objects.filter(user=request.user.id)    
   else:
