@@ -16,22 +16,14 @@
             </div>
             <div class="profile-band2">
                 <div class="trips-carousel owl-carousel owl-theme">
-                    <div class="trip-item item">
-                        <img src="{% static "images/bg.jpg" %}">
-                        <span class="trip-title">Laguna Beach</span>
-                    </div>
-                    <div class="trip-item item">
-                        <img src="{% static "images/bg2.jpg" %}">
-                        <span class="trip-title">Laguna Beach2</span>
-                    </div>
-                    <div class="trip-item item">
-                        <img src="{% static "images/bg3.jpg" %}">
-                        <span class="trip-title">Laguna Beach3</span>
-                    </div>
-                    <div class="trip-item item">
-                        <img src="{% static "images/bg4.jpg" %}">
-                        <span class="trip-title">Laguna Beach4</span>
-                    </div>
+                    {% if tours %}
+                        {% for tour in tours %}
+                        <div class="trip-item item">
+                            <img src="{% static "images/bg.jpg" %}">
+                            <span class="trip-title">{{ tour.name }}</span>
+                        </div>
+                        {% endfor %}
+                    {% endif %}   
                 </div>
             </div>
         </div>
