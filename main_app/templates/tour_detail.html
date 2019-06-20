@@ -20,7 +20,6 @@ height="40%"
 frameborder="0" style="border:0"
 src="{{ embed_url }}" allowfullscreen>
 </iframe>
-{{ waypoint_dicts }}
 <div id="winery-cards-sortable">
 {% for winery in waypoint_dicts %}
 <div class='winery-card'>
@@ -40,6 +39,10 @@ src="{{ embed_url }}" allowfullscreen>
       <input type="hidden" name='winery' value='{{ winery.name }}' >
       <input type="hidden" name='position' value='{{ forloop.counter0 }}' >
       <input type="submit" class='btn' name="movedn" value="⇩"></input>
+      {% csrf_token %}
+    </form>
+    <form action="unassoc_winery/{{ winery.pk }}/" method="POST">
+      <input type="submit" class='btn' value="delete"></input>
       {% csrf_token %}
     </form>
   </div>
