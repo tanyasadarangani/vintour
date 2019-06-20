@@ -3,6 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
 from googleplaces import GooglePlaces, types, lang
 import os
 from .models import Winery, Tour, User
@@ -135,14 +136,12 @@ def serp(request):
   key = os.environ['MAP_KEY']
   google_places = GooglePlaces(key)
   regions = request.POST.getlist('region')
-  print(regions)
-  #query_result = google_places.nearby_search(location='Napa, California', keyword='Winery')
   if request.user.is_authenticated:
     tours = Tour.objects.filter(user=request.user.id)    
   else:
     tours = None
-  query_result = Winery.objects.filter(region__in=regions)[:10]
-  for query in query_result:
+  query_result_raw = Winery.objects.filter(region__in=regions).order_by('name')[:20]
+  for query in query_result_raw:
     call = google_places.text_search(query=query) 
     query.place_id = call._response['results'][0]['place_id']
     #query.image = call._response['results'][0]['photos'][0]['html_attributions']    
@@ -150,5 +149,5 @@ def serp(request):
     #query.region = call._response['results'][0]['region']
     query.total_ratings = call._response['results'][0]['user_ratings_total']
     #query.open_now = call._response['results'][0]['opening_hours']['open_now']
-
+  query_result = Paginator(query_result_raw, 5)
   return render(request, 'serp.html', {'key': key, 'query_result': query_result, 'tours': tours})
