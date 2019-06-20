@@ -134,3 +134,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 import django_heroku
 django_heroku.settings(locals())
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
