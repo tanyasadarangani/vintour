@@ -87,8 +87,10 @@ def tour_detail(request, tour_id):
     for idx in range(len(waypoints) - 1):
       waypoints[idx] = waypoints[idx] + '|'
     waypoint_concat = ''.join(waypoints).replace(' ', '+').replace('&', '+').replace('.', '')
-
-    embed_url = (f'https://www.google.com/maps/embed/v1/directions?key={ map_key }&origin={ origin }&destination={ destination }&waypoints={ waypoint_concat }')
+    if len(stops) <= 2:
+      embed_url = f'https://www.google.com/maps/embed/v1/place?q={origin}&key={ map_key }'
+    else:
+      embed_url = (f'https://www.google.com/maps/embed/v1/directions?key={ map_key }&origin={ origin }&destination={ destination }&waypoints={ waypoint_concat }')
     return render(request, 'tour_detail.html', {
       'map_key': map_key,
       'tour': tour,
@@ -110,6 +112,13 @@ def add_winery(request):
   tour.stops += f'{winery},'
   tour.save()
   return redirect('/')
+
+@login_required
+def name_tour(request, tour_id):
+  tour = Tour.objects.get(id=tour_id)
+  tour.name = request.POST['name']
+  tour.save()
+  return redirect('tour_detail', tour_id=tour_id)
 
 @login_required
 def unassoc_winery(request, tour_id, winery_id):
