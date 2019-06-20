@@ -3,28 +3,47 @@
 {% load static %}
 <style>
 body {
-  height: 100vh;
+  height: 100%;
+  background-image: url('{% static "images/bg4.jpg" %}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  color: silver;
 }
 .winery-card {
   border: 1px solid black;
   height: auto;
   width: 60%;
+  background-color: darkslategrey;
+}
+strong {
+  color: silver;
+  padding: 5px;
+}
+iframe {
+  margin-top: 80px;
+  height: 50vh;
 }
 </style>
+<div id="map-container">
 <iframe
-width="80%"
-height="40%"
+width="800"
+height="400"
 frameborder="0" style="border:0"
 src="{{ embed_url }}" allowfullscreen>
 </iframe>
-{{ waypoint_dicts }}
+</div>
+<h2>{{ user }}'s Tour: {{ tour.name }}</h2>
+<h3>Rename {{ tour.name }}:</h3>
+<form action="{% url 'name_tour' tour.id %}" method="post">
+  <input type="text" name="name" value="{{ tour.name }}">
+  <input type="submit" class="btn" value="Save">
+  {% csrf_token %}
+</form>
 <div id="winery-cards-sortable">
 {% for winery in waypoint_dicts %}
 <div class='winery-card'>
-  <strong>{{ winery.name }}</strong><br>
+  <p><strong>{{ winery.name }}</strong></p><br>
   <strong>{{ winery.region }}</strong><br>
   <strong>{{ winery.address }}</strong><br>
   <strong>{{ winery.desc }}</strong><br>
@@ -42,13 +61,13 @@ src="{{ embed_url }}" allowfullscreen>
       <input type="submit" class='btn' name="movedn" value="⇩"></input>
       {% csrf_token %}
     </form>
+    <form action="unassoc_winery/{{ winery.pk }}/" method="POST">
+      <input type="submit" class='btn' value="delete"></input>
+      {% csrf_token %}
+    </form>
   </div>
   
 </div>
 {% endfor %}
 </div>
 {% endblock %}
-
-{% comment %}
-background-image: url('{% static "images/bg4.jpg" %}');
-{% endcomment %}
