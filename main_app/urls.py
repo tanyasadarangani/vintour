@@ -15,4 +15,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('recommendedtrips/', views.recommendedtrips, name='recommendedtrips'),
     path('tours/add/', views.add_winery, name='add_winery'),
+    path('dbupdate/', views.dbupdate, name='dbupdate'),
 ]
