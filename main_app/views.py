@@ -112,7 +112,7 @@ def add_winery(request):
   tour.winery.add(winery)
   tour.stops += f'{winery},'
   tour.save()
-  return redirect('/')
+  return redirect('/tours/' + str(tour.id) + '/')
 
 def search(request):
   return render(request,'search.html')
