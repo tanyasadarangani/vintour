@@ -142,12 +142,17 @@ def serp(request):
     tours = None
   query_result_raw = Winery.objects.filter(region__in=regions).order_by('name')[:20]
   for query in query_result_raw:
+    print(query)
     call = google_places.text_search(query=query) 
-    query.place_id = call._response['results'][0]['place_id']
-    #query.image = call._response['results'][0]['photos'][0]['html_attributions']    
-    query.rating = call._response['results'][0]['rating']
-    #query.region = call._response['results'][0]['region']
-    query.total_ratings = call._response['results'][0]['user_ratings_total']
-    #query.open_now = call._response['results'][0]['opening_hours']['open_now']
-  query_result = Paginator(query_result_raw, 5)
+    if(call.has_attributions):
+      print(call)
+      query.place_id = call._response['results'][0]['place_id']
+      #query.image = call._response['results'][0]['photos'][0]['html_attributions']    
+      query.rating = call._response['results'][0]['rating']
+      #query.region = call._response['results'][0]['region']
+      query.total_ratings = call._response['results'][0]['user_ratings_total']
+      #query.open_now = call._response['results'][0]['opening_hours']['open_now']
+  page = request.GET.get('page', 1)
+  paginator = Paginator(query_result_raw, 5)
+  query_result = paginator.get_page(page)
   return render(request, 'serp.html', {'key': key, 'query_result': query_result, 'tours': tours})

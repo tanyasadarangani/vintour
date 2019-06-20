@@ -6,7 +6,25 @@
 
 <div class="container">
     <div class="results">
-        {% for place in query_result %}
+        <div class="pagination">
+                <span class="step-links">
+                    {% if query_result.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ query_result.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ query_result.number }} of {{ query_result.paginator.num_pages }}.
+                    </span>
+            
+                    {% if query_result.has_next %}
+                        <a href="?page={{ query_result.next_page_number }}">next</a>
+                        <a href="?page={{ query_result.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+        </div>   
+        {% for place in query_result.object_list %}
+     
         <div class="result">
             <div class="result-head">{{ place.name }}</div>
             <div class="result-body">
