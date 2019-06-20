@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
+django_heroku.settings(locals())
 # Map API key stuff:
 import environ
 environ.Env()
 environ.Env.read_env()
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
