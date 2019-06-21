@@ -15,4 +15,4 @@ you should take and set off on your journey!
 Technologies Used: HTML, CSS, JavaScript, Bulma, SASS, Django, Heroku, Google Maps API.
 
 ScreenShots:
-![LINK](https://imgur.com/2ARBPtv)
+![link](https://imgur.com/2ARBPtv.png)
